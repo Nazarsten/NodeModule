@@ -1,0 +1,3 @@
+name: "Oleg",
+age: 23,
+city: "Lviv"
