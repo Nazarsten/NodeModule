@@ -20,7 +20,8 @@ app.get('/login', (req, res) => {
 
 const usersArr = [];
 
-app.post('/login', ({body}, res) => {
+app.post('/login', (req, res) => {
+    const { body } = req
     const existEmail = usersArr.some(user => user.email === body.email)
     if (existEmail) {
         res.redirect('/err')
@@ -71,8 +72,8 @@ app.get('/signIn', (req,res)=>{
 })
 
 
-app.post('/signIn' ,( {body}, res)=>{
-
+app.post('/signIn' ,( req, res)=>{
+    const { body } = req
     const validData =usersArr.filter( user => user.password === body.password)
     if(validData.length === 1){
         res.render('acc', { validData })
