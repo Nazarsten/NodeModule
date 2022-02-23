@@ -40,31 +40,30 @@ app.get('/err', (req, res) => {
 })
 
 app.get('/users/:userId', (req, res) => {
-    const {userId} = req.params;
+    const { userId } = req.params;
     const user = usersArr[userId];
     res.render('user', {user})
 })
 
 app.get('/user/:location', (req, res) => {
-    const {location} = req.params;
+    const { location } = req.params;
     const resultTrue = usersArr.filter(user => user.city === location);
     if (resultTrue.length <= 0) {
         res.render('err')
     } else {
-        res.render('cityFilteredUsers', {resultTrue})
+        res.render('cityFilteredUsers', { resultTrue })
     }
 })
 
 app.get('/user&age=:age', (req, res) => {
-    const {age} = req.params;
+    const { age } = req.params;
     const result = usersArr.filter(user => user.age === age);
     if (result.length !== 0) {
-        res.render('ageFilteredUsers', {result})
+        res.render('ageFilteredUsers', { result })
     } else {
         res.render('err');
     }
 })
-
 
 app.listen(5200, () => {
     console.log('Server has started')
