@@ -18,6 +18,8 @@ app.get('/login', (req, res) => {
     res.render('login')
 })
 
+const usersArr = [];
+
 app.post('/login', ({body}, res) => {
     const existEmail = usersArr.some(user => user.email === body.email)
     if (existEmail) {
