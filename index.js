@@ -65,6 +65,23 @@ app.get('/user&age=:age', (req, res) => {
     }
 })
 
+
+app.get('/signIn', (req,res)=>{
+    res.render('signIn')
+})
+
+
+app.post('/signIn' ,( {body}, res)=>{
+
+    const validData =usersArr.filter( user => user.password === body.password)
+    if(validData.length === 1){
+        res.render('acc', { validData })
+    }else{
+        res.render('err')
+    }
+
+})
+
 app.listen(5200, () => {
     console.log('Server has started')
 })
